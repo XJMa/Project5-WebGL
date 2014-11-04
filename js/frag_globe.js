@@ -48,6 +48,7 @@
     var u_ViewLocation;
     var u_PerspLocation;
     var u_CameraSpaceDirLightLocation;
+    var u_DirLightLocation;//for cloud shadow
     var u_DayDiffuseLocation;
     var u_NightLocation;
     var u_CloudLocation;
@@ -76,7 +77,7 @@
         u_BumpLocation = gl.getUniformLocation(program,"u_Bump");
         u_timeLocation = gl.getUniformLocation(program,"u_time");
         u_CameraSpaceDirLightLocation = gl.getUniformLocation(program,"u_CameraSpaceDirLight");
-
+        u_DirLightLocation = gl.getUniformLocation(program,"u_DirLight");
         gl.useProgram(program);
     })();
 
@@ -267,7 +268,7 @@
         gl.uniformMatrix4fv(u_InvTransLocation, false, invTrans);
 
         gl.uniform3fv(u_CameraSpaceDirLightLocation, lightdir);
-
+        gl.uniform3fv(u_DirLightLocation, vec3.create([1.0, 0.0, 1.0]));
         gl.activeTexture(gl.TEXTURE0);
         gl.bindTexture(gl.TEXTURE_2D, dayTex);
         gl.uniform1i(u_DayDiffuseLocation, 0);
@@ -287,7 +288,7 @@
         gl.bindTexture(gl.TEXTURE_2D, specTex);
         gl.uniform1i(u_EarthSpecLocation, 5);
         gl.drawElements(gl.TRIANGLES, numberOfIndices, gl.UNSIGNED_SHORT,0);
-
+        gl.uniform1f(u_timeLocation, time);
         time += 0.001;
         window.requestAnimFrame(animate);
     }
