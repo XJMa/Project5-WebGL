@@ -4,6 +4,10 @@ CIS565: Project 5: WebGL
 Fall 2014
 -------------------------------------------------------------------------------
 ![final rendering](https://raw.githubusercontent.com/XJMa/Project5-WebGL/master/result/pic1.gif)
+
+demo link:
+
+https://www.youtube.com/watch?v=-qVH-0hQkc0&feature=youtu.be
 -------------------------------------------------------------------------------
 Part1:
 -------------------------------------------------------------------------------
