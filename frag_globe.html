@@ -124,8 +124,8 @@
         //vec2 v_TexcoordCloudShadow = vec2(v_Texcoord.s - 0.01 * u_time,v_Texcoord.t) + vec2(-u_CameraSpaceDirLight.x*0.007, -u_CameraSpaceDirLight.y*0.007);
 		float cloudTransShadow = texture2D(u_CloudTrans, cloudShadowOffset2).r;
         
-        //dayColor = mix((0.6 * diffuse + 0.4 * specular*EarthSpec )* dayColor, vec3(0.0,0.0,0.0), 1.0-cloudTransShadow);
-        dayColor =(0.6 * diffuse + 0.4 * specular*EarthSpec )* dayColor;
+        dayColor = mix((0.6 * diffuse + 0.4 * specular*EarthSpec )* dayColor, vec3(0.0,0.0,0.0), 1.0-cloudTransShadow);
+        //dayColor =(0.6 * diffuse + 0.4 * specular*EarthSpec )* dayColor;
         dayColor = mix(cloudsColor, dayColor, cloudMix);
         nightColor = 1.5 * mix(vec3(0.0,0.0,0.0),nightColor,cloudMix);
         
